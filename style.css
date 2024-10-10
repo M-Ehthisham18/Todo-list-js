@@ -1,0 +1,305 @@
+*,::after,::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --base:#f6f6f6;
+    --base-300:#e4e4e4;
+    --primary-color:darkorchid;
+}
+
+/* for dark mode  */
+    .themeToggle {
+        color: #bbb;
+        width: 3em;
+    }
+    
+    .st-sunMoonThemeToggleBtn {
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .st-sunMoonThemeToggleBtn .themeToggleInput {
+        opacity: 0;
+        width: 100%;
+        aspect-ratio: 1;
+    }
+    
+    .st-sunMoonThemeToggleBtn svg {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.4s ease;
+        transform: rotate(40deg);
+    }
+    
+    .st-sunMoonThemeToggleBtn svg .sunMoon {
+        transform-origin: center center;
+        transition: inherit;
+        transform: scale(1);
+    }
+    
+    .st-sunMoonThemeToggleBtn svg .sunRay {
+        transform-origin: center center;
+        transform: scale(0);
+    }
+    
+    .st-sunMoonThemeToggleBtn svg mask > circle {
+        transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
+        transform: translate(0px, 0px);
+    }
+    
+    .st-sunMoonThemeToggleBtn svg .sunRay2 {
+        animation-delay: 0.05s !important;
+    }
+    .st-sunMoonThemeToggleBtn svg .sunRay3 {
+        animation-delay: 0.1s !important;
+    }
+    .st-sunMoonThemeToggleBtn svg .sunRay4 {
+        animation-delay: 0.17s !important;
+    }
+    .st-sunMoonThemeToggleBtn svg .sunRay5 {
+        animation-delay: 0.25s !important;
+    }
+    .st-sunMoonThemeToggleBtn svg .sunRay5 {
+        animation-delay: 0.29s !important;
+    }
+    
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg {
+        transform: rotate(90deg);
+    }
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg mask > circle {
+        transform: translate(16px, -3px);
+    }
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunMoon {
+        transform: scale(0.55);
+    }
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunRay {
+        animation: showRay1832 0.4s ease 0s 1 forwards;
+    }
+    
+    @keyframes showRay1832 {
+        0% {
+        transform: scale(0);
+        }
+        100% {
+        transform: scale(1);
+        }
+    }
+
+body{
+    background-color: #eeeeff;
+}
+header{
+    background-color: var(--primary-color);
+    color: var(--base);
+    font-family: sans-serif;
+    margin-bottom: 24px;
+    nav{
+        width: 100%;
+        max-width: 1000px;
+        margin: auto;
+        padding: 16px 30px;
+    }
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .container{
+        width: 100%;
+        min-width: 320px;
+        max-width: 600px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .input-container{
+        max-width: 800px;
+        height: 48px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        #todoInput{
+            height: 100%;
+            border-radius: 6px;
+            font-size: x-large;
+            padding: 4px 14px;
+            text-transform: capitalize;
+            background-color: var(--base);
+
+            &:focus{
+                outline: 1px solid #00007c;;
+            }
+        }
+        /* From Uiverse.io by milegelu */ 
+        .button {
+            --bezier: cubic-bezier(0.22, 0.61, 0.36, 1);
+            --edge-light: hsla(0, 0%, 50%, 0.8);
+            --text-light: rgba(255, 255, 255, 0.4);
+            --back-color: 240, 40%;
+            
+            height: 100%;
+            cursor: pointer;
+            padding: 0.7em 1em;
+            border-radius: 0.5em;
+            min-height: 2.4em;
+            min-width: 3em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        
+            font-size: 20.5px;
+            letter-spacing: 0.05em;
+            line-height: 1;
+            font-weight: bold;
+        
+            background: linear-gradient(
+            140deg,
+            var(--primary-color),rgb(220, 149, 255)
+            );
+            color: hsla(0, 0%, 90%);
+            border: 0;
+            box-shadow: inset 0.4px 1px 4px var(--edge-light);
+        
+            transition: all 0.1s var(--bezier);
+        }
+        
+        .button:hover {
+            --edge-light: hsla(0, 0%, 50%, 1);
+            text-shadow: 0px 0px 10px var(--text-light);
+            box-shadow: inset 0.4px 1px 4px var(--edge-light),
+            2px 4px 8px hsla(0, 0%, 0%, 0.295);
+            transform: scale(1.05);
+        }
+        
+        .button:active {
+            --text-light: rgba(255, 255, 255, 1);
+        
+            background: linear-gradient(
+            140deg,
+            rgba(220, 149, 255, 0.825),var(--primary-color)
+            
+            );
+            box-shadow: inset 0.4px 1px 8px var(--edge-light),
+            0px 0px 8px hsla(var(--back-color), 50%, 0.6);
+            text-shadow: 0px 0px 20px var(--text-light);
+            color: hsla(0, 0%, 100%, 1);
+            letter-spacing: 0.1em;
+            transform: scale(1);
+        }
+
+        @media (max-width:500px) {
+            flex-direction: column;
+            height: 100%;
+            margin-bottom: 24px;
+        }
+    }
+
+    ul{
+        width: 100%;
+        list-style: none;
+        padding: 16px;
+        .completed{
+            text-decoration: line-through;
+            background-color: var(--base-300);
+        }
+        li{
+            background: var(--base);
+            height: 64px;
+            border-radius: 6px;
+            padding: 8px 24px;
+            font-size: x-large;
+            font-weight: 600;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            box-shadow: 4px 3px 7px black;
+            
+
+            .Btn {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 45px;
+                height: 45px;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+                transition-duration: 0.3s;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+                background: rgb(255, 135, 65);
+                background: linear-gradient(
+                250deg,
+                rgba(255, 135, 65, 1) 15%,
+                rgba(255, 65, 65, 1) 65%
+                );
+            }
+            
+            /* plus sign */
+            .sign {
+                width: 100%;
+                transition-duration: 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .sign svg {
+                width: 17px;
+            }
+            
+            .sign svg path {
+                fill: white;
+            }
+            /* text */
+            .text {
+                position: absolute;
+                right: 0%;
+                width: 0%;
+                opacity: 0;
+                color: white;
+                font-size: 1.2em;
+                font-weight: 600;
+                transition-duration: 0.3s;
+            }
+            /* hover effect on button width */
+            .Btn:hover {
+                width: 125px;
+                border-radius: 40px;
+                transition-duration: 0.3s;
+            }
+            
+            .Btn:hover .sign {
+                width: 30%;
+                transition-duration: 0.3s;
+                padding-left: 20px;
+            }
+            /* hover effect button's text */
+            .Btn:hover .text {
+                opacity: 1;
+                width: 70%;
+                transition-duration: 0.3s;
+                padding-right: 10px;
+            }
+            /* button click effect*/
+            .Btn:active {
+                transform: translate(2px, 2px);
+            }
+            
+        }
+    }
+}
+
